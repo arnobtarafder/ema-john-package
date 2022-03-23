@@ -8,9 +8,11 @@ const Cart = (props) => {
 
     let total = 0;
     let shipping = 0;
+    let quantity = 0;
     for (const product of cart) {
         // console.log(product.price);
-        total = total + product.price;
+        quantity = quantity + product.quantity;
+        total = total + product.price * product.quantity;
         shipping = shipping + product.shipping;
     }
     const tax = parseInt((total * 0.1).toFixed(2));
@@ -20,11 +22,11 @@ const Cart = (props) => {
         <div className='cart'>
             {/* Selected Items:  {cartContainer.length} */}
             <h4>Order Summary</h4>
-            <p>Selected Items: {cart.length}</p>
+            <p>Selected Items: {quantity}</p>
             <p>Total price: <span className='cart-taka-sign'>৳</span> {total}</p>
             <p>Total Shipping: {shipping}</p>
             <p>Tax: {tax}</p>
-            <p>Grand Total: {grandTotal}</p>
+            <strong>Grand Total: {grandTotal.toFixed(2)}</strong>
         </div>
     );
 };
