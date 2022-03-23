@@ -1,0 +1,10 @@
+.cart{
+    position: sticky;
+    /* margin-top: 11px; */
+    top: 33px;
+    padding: 30px 21px;
+}
+.cart-taka-sign{
+    font-size: 1.7rem;
+    
+}

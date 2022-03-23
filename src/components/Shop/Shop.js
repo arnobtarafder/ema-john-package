@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
@@ -6,19 +7,21 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     // console.log(products);
     const [cart, setCart] = useState([]);
+// console.log(cart);
 
-    const handleAddToCart = (product) => {
-        // console.log(product);
-        // do not do this: cart.push(product)
-        const newCart = [...cart, product]
-        setCart(newCart)
-    }
-    // https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/
+// https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/
     useEffect( () => {
         fetch('products.json')
         .then(res => res.json())
         .then(data => setProducts(data))
     }, [])
+
+    const handleAddToCart = (product) => {
+        console.log(product);
+        // do not do this: cart.push(product)
+        const newCart = [...cart, product]
+        setCart(newCart)
+    }
 
     return (
         <div className='shop-container'>
@@ -33,7 +36,9 @@ const Shop = () => {
                 }
             </div>
             <div className="cart-container">
-              Selected Items:  {cart.length}
+              {/* Selected Items:  {cart.length} */}
+              {/* <Cart cartContainer = {cart}></Cart>  */}
+              <Cart cart = {cart}></Cart> 
             </div>
         </div>
     );
