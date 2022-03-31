@@ -1,4 +1,16 @@
 .review-item-container {
     margin: 0 auto;
-
+}
+.cart-container {
+    margin-bottom: 110px;
+    margin-top: 110px;
+    padding-top: 110px;
+}
+.proceed-button {
+    margin-top: 33px;
+    width: 232px;
+    height: 48px;
+    background-color: #FF9900;
+    color: #FFFFFF;
+    border: 0;
 }

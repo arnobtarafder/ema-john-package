@@ -12,6 +12,14 @@
 .cart-container{
     background: rgba(255, 153, 0, 0.3)
 }
+.review-button {
+        margin-top: 33px;
+        width: 232px;
+        height: 48px;
+        background-color: #FF3030;
+        color: #FFFFFF;
+        border: 0;
+}
 
 @media only screen and (max-width:688px) {
     .products-container{

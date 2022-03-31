@@ -14,9 +14,9 @@ const ReviewItem = ({product, handleRemoveProduct}) => {
 
                 <div className="review-item-details">
                     <p className="product-name" title={name}>{name.length > 20 ? name.slice(0, 20) + '...' : name}</p>
-                    <p>Price: <span className='orange'>৳{price}</span></p>
-                    <p>Shipping: <span className='orange'>৳{shipping}</span></p>
-                    <p>Quantity: <span className='orange'>৳{quantity}</span></p>
+                    <p>Price: <span className='orange'><span className='review-taka-sign'>৳</span>{price}</span></p>
+                    <p>Shipping: <span className='orange'><span className='review-taka-sign'>৳</span>{shipping}</span></p>
+                    <p>Quantity: <span className='orange'><span className='review-taka-sign'>৳</span>{quantity}</span></p>
                 </div>
 
                 <div className="delete-container">
