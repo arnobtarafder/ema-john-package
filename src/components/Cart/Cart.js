@@ -4,7 +4,7 @@ import './Cart.css'
 // const Cart = ({cartContainer}) => {
 const Cart = (props) => {
     const {cart} = props;
-    // console.log(cart);
+    // console.log(props.children);
 
     let total = 0;
     let shipping = 0;
@@ -26,7 +26,8 @@ const Cart = (props) => {
             <p>Total price: <span className='cart-taka-sign'>৳</span> {total}</p>
             <p>Total Shipping: {shipping}</p>
             <p>Tax: {tax}</p>
-            <strong>Grand Total: {grandTotal.toFixed(2)}</strong>
+            <strong className=''>Grand Total: {grandTotal.toFixed(2)}</strong>
+            {props.children}
         </div>
     );
 };

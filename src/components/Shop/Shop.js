@@ -3,6 +3,8 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import useProducts from '../../hooks/useProducts';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     // const student1= {name: "rafique", marks: 79, result: "A+"};
@@ -14,35 +16,28 @@ const Shop = () => {
 
 
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useProducts([]);
     // console.log(products);
     const [cart, setCart] = useState([]);
 // console.log(cart);
 
 // https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/
-    useEffect( () => {
-        fetch('products.json')
-        .then(res => res.json())
-        .then(data => {
-            setProducts(data)
-        })
-    }, []);
 
-    useEffect( () => {
+    useEffect( () =>{
         const storedCart = getStoredCart();
-        const savedCart = []
-        for(const id in storedCart) {
+        const savedCart = [];
+        for(const id in storedCart){
             const addedProduct = products.find(product => product.id === id);
-            if(addedProduct) {
+            if(addedProduct){
                 const quantity = storedCart[id];
                 addedProduct.quantity = quantity;
                 savedCart.push(addedProduct);
-              }
+            }
         }
         setCart(savedCart);
     }, [products])
 
-   
+
     const handleAddToCart = (selectedProduct) => {
         // console.log(selectedProduct);
         // do not do this: cart.push(product)
@@ -78,7 +73,11 @@ const Shop = () => {
             <div className="cart-container">
               {/* Selected Items:  {cart.length} */}
               {/* <Cart cartContainer = {cart}></Cart>  */}
-              <Cart cart = {cart}></Cart> 
+              <Cart cart = {cart}>
+                    <Link to={"/orders"}>
+                        <button>Review Order</button>    
+                    </Link>   
+               </Cart> 
             </div>
         </div>
     );
