@@ -55,7 +55,7 @@ const Shipment = () => {
         </div>
         
         <div className="input-group">
-            <label htmlFor="phone">Phone NUmber</label>
+            <label htmlFor="phone">Phone Number</label>
             <input onBlur={handlePhoneBlur} type="number" name="phone" id="" required/>
         
         </div>
