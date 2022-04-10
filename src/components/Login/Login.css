@@ -6,6 +6,7 @@
     border-radius: 11px;
     display: flex;
     justify-content: center;
+    padding-bottom: 41px;
 }
 .form-title {
     font-size: 35px;
