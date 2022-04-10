@@ -9,7 +9,7 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
-    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth)
+    const [createUserWithEmailAndPassword, hookError, user] = useCreateUserWithEmailAndPassword(auth)
 
     const handleEmailBlur = event => {
         setEmail(event.target.value);
@@ -40,7 +40,7 @@ const SignUp = () => {
         createUserWithEmailAndPassword(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user);
+            console.log("user created");
         })
     }
 
@@ -64,11 +64,8 @@ const SignUp = () => {
             <input onBlur={handleConfirmPasswordBlur} type="password" name="confirm-password" id="" required/>
         
         </div>
-        <p style={{color: "red"}}>{error}</p>
+        <p style={{color: "red"}}>{error || hookError}</p>
         <input type="submit" value="sign up" className='form-submit'/>
-        <p className='form-suggestion'>
-            Already have an account? <Link className='form-link' to="/login"> Login </Link>
-        </p>
 {/* 
         <div className='horizontal-divider'>
               <div className='line-left' />
@@ -76,6 +73,10 @@ const SignUp = () => {
               <div className='line-right' />
            </div> */}
         </form>
+        
+        <p className='form-suggestion'>
+            Already have an account? <Link className='form-link' to="/login"> Login </Link>
+        </p>
 
         </div>
       </div>
