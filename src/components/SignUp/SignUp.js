@@ -8,6 +8,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const [createUserWithEmailAndPassword, hookError, user] = useCreateUserWithEmailAndPassword(auth)
 
@@ -24,6 +25,9 @@ const SignUp = () => {
         setConfirmPassword(event.target.value);
     }
 
+    if(user){
+        navigate('/')
+    }
 
     const handleCreateUser = (event) => {
         event.preventDefault();
@@ -37,11 +41,14 @@ const SignUp = () => {
             return;
         }
 
+        // createUserWithEmailAndPassword(email, password)
+        // .then(result => {
+        //     const user = result.user;
+        //     console.log("user created");
+        // })
+
         createUserWithEmailAndPassword(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log("user created");
-        })
+
     }
 
     return (
