@@ -9,7 +9,7 @@ const Product = ({product, handleAddToCart}) => {
     const {name, seller,img, id, category, price, stock, ratings, ratingsCount, shipping, quantity} = product; //for upper destructure and parameter
     
     // const handleAddToCart = () => {
-        // console.log(props.product.id);
+        // console.log(props.product._id);
     // }
     // const {handleAddToCart} = props;
     return (
@@ -21,7 +21,7 @@ const Product = ({product, handleAddToCart}) => {
              <p><small>Seller: {seller}</small></p>
              <p><small>Ratings: {ratings}</small></p>    
            </div>
-           {/* () => props.handleAddToCart(props.product.id) */}
+           {/* () => props.handleAddToCart(props.product._id) */}
            <button onClick={() => handleAddToCart(product)} className='button-cart'>
                <p className='button-text'>Add to Cart</p>
                <FontAwesomeIcon icon = {faShoppingCart}></FontAwesomeIcon>
