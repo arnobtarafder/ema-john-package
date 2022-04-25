@@ -16,3 +16,15 @@ position: sticky;
 .header-navigation a:hover{
     color: orange;
 }
+.sign-out{
+    border: 0;
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 33px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.sign-out:hover{
+    color: rgb(219, 61, 61);
+}
