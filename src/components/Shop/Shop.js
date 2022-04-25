@@ -5,6 +5,7 @@ import './Shop.css';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import useProducts from '../../hooks/useProducts';
 import { Link } from 'react-router-dom';
+import useCart from '../../hooks/useCart';
 
 const Shop = () => {
     // const student1= {name: "rafique", marks: 79, result: "A+"};
@@ -18,10 +19,10 @@ const Shop = () => {
 
     // const [products, setProducts] = useProducts([]);
     // console.log(products);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useCart();
     const [page, setPage] = useState(0);
     const [pageCount, setPageCount] = useState(0);
-    const [size, setSize] = useState(0);
+    const [size, setSize] = useState(10);
     const [products, setProducts] = useState([]);
 
     useEffect( () => {
@@ -44,19 +45,6 @@ const Shop = () => {
 
 // https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/
 
-    useEffect( () =>{
-        const storedCart = getStoredCart();
-        const savedCart = [];
-        for(const id in storedCart){
-            const addedProduct = products.find(product => product._id === id);
-            if(addedProduct){
-                const quantity = storedCart[id];
-                addedProduct.quantity = quantity;
-                savedCart.push(addedProduct);
-            }
-        }
-        setCart(savedCart);
-    }, [products])
 
 
     const handleAddToCart = (selectedProduct) => {
@@ -98,10 +86,10 @@ const Shop = () => {
                                 onClick={() => setPage(number)}
                                 >{number}</button>)
                     }
-                    {size}
-                    <select onChange={e => setSize(e.target.value)}>
+                    {/* {size} */}
+                    <select defaultValue={'DEFAULT'} onChange={e => setSize(e.target.value)}>
                         <option value="5">5</option>
-                        <option value="10" selected>10</option>
+                        <option value="DEFAULT" disabled>10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
                     </select>
