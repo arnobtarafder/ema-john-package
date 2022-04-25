@@ -4,9 +4,7 @@ import React from 'react';
 import './Product.css'
 
 const Product = ({product, handleAddToCart}) => {
-    // console.log(props);
-    // const {product, handleAddToCart} = props;
-    const {name, seller,img, id, category, price, stock, ratings, ratingsCount, shipping, quantity} = product; //for upper destructure and parameter
+    const {name, seller,img, _id, price, ratings} = product; //for upper destructure and parameter
     
     // const handleAddToCart = () => {
         // console.log(props.product._id);

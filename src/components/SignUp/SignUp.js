@@ -60,12 +60,6 @@ const SignUp = () => {
             return;
         }
 
-        // createUserWithEmailAndPassword(email, password)
-        // .then(result => {
-        //     const user = result.user;
-        //     console.log("user created");
-        // })
-
         createUserWithEmailAndPassword(email, password)
 
     }
@@ -100,12 +94,7 @@ const SignUp = () => {
                         type="submit"
                         value="sign up"
                         className={`${!agree ? "form-submit-disabled" : "form-submit"}`} />
-                    {/* 
-        <div className='horizontal-divider'>
-              <div className='line-left' />
-               <p>or</p>
-              <div className='line-right' />
-           </div> */}
+         
                 </form>
 
                 <p className='form-suggestion'>
