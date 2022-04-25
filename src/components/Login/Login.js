@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import React, { useEffect, useState } from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Login.css'
 
 const Login = () => {
+    const [signInWithGoogle, googleUser, googleLoading] = useSignInWithGoogle(auth);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
@@ -25,13 +26,29 @@ const Login = () => {
         setPassword(event.target.value)
     }
 
-    if(user) {
-        navigate(from, {replace: true})
-    }
+    useEffect( () => {
+        if(user || googleUser) {
+            navigate(from, {replace: true})
+        }
+    }, [user, googleUser])
 
     const handleUserLogin = (event) => {
         event.preventDefault();
         signInWithEmailAndPassword(email, password)
+    }
+
+    if (googleLoading) {
+        return <>
+            <div class="loading-container">
+                <div class="loading-span-container">
+                    <span class="one loading-span"></span>
+                    <span class="two loading-span"></span>
+                    <span class="three loading-span"></span>
+                    <span class="four loading-span"></span>
+                </div>
+
+            </div>
+        </>
     }
 
     return (
@@ -65,7 +82,9 @@ const Login = () => {
            </div>
 
             <div className='input-wrapper'>
-            <button className='google-auth'>
+            <button
+                onClick={() => signInWithGoogle()} 
+                className='google-auth'>
                 <img src='https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-32.png' alt='' />
                 <p className="my-auto"> Continue with Google </p>
             </button>

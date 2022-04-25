@@ -1,4 +1,3 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -6,10 +5,10 @@ import auth from '../../firebase.init';
 const Shipment = () => {
     const [user] = useAuthState(auth)
     const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const [email] = useState("");
     const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
-    const [error, setError] = useState("");
+    const [error] = useState("");
 
     const handleNameBlur = event => {
         setName(event.target.value);
@@ -18,11 +17,6 @@ const Shipment = () => {
     const handleAddressBlur = event => {
         setAddress(event.target.value);
     }
-
-    const handleEmailBlur = event => {
-        setEmail(event.target.value);
-    }
-
     
     const handlePhoneBlur = event => {
         setPhone(event.target.value);
